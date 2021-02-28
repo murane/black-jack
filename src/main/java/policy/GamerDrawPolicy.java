@@ -1,3 +1,7 @@
+package policy;
+
+import user.User;
+
 public class GamerDrawPolicy implements DrawPolicy {
 
     @Override

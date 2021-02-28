@@ -1,3 +1,5 @@
+package card;
+
 public class Card {
 
     private String pattern;

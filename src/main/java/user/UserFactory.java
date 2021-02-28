@@ -1,3 +1,8 @@
+package user;
+
+import policy.DealerDrawPolicy;
+import policy.GamerDrawPolicy;
+
 public class UserFactory {
 
     public static User getDealer() {
