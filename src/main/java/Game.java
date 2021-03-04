@@ -12,11 +12,11 @@ public class Game {
     private User gamer;
     private Deck deck;
 
-    public Game(WinnerPolicy winnerPolicy, Deck deck) {
+    public Game(WinnerPolicy winnerPolicy, Deck deck, User dealer, User gamer) {
         this.winnerPolicy = winnerPolicy;
         this.deck = deck;
-        this.dealer = UserFactory.getDealer();
-        this.gamer = UserFactory.getGamer();
+        this.dealer = dealer;
+        this.gamer = gamer;
     }
 
     public void run() {
