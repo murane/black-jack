@@ -1,34 +1,36 @@
+import game.Card;
+import game.Deck;
+import game.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import player.Dealer;
+import player.Player;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
 
     private Player gamer;
     private Player dealer;
     private Game game;
+    private Deck deck;
 
     @BeforeEach
     void setUp() {
         game = new Game();
         gamer = game.getGamer();
         dealer = game.getDealer();
-    }
+        deck = game.getDeck();
+    } // 게임, 게이머 , 딜러 생성
 
     @Test
     public void chooseCard() {
         Card card1 = new Card("H", "1"); // Heart 1
         Card card2 = new Card("D", "1"); // Diamond 1
 
-        Player player = new Player();
-        player.draw(card1);
-        player.draw(card2);
+        Dealer player = new Dealer();
+        player.draw(deck,card1);
+        player.draw(deck,card2);
 
         assertEquals(2, player.getScore());
     }
@@ -39,83 +41,75 @@ public class GameTest {
         Card card2 = new Card("D", "J"); // Diamond Jack
         Card card3 = new Card("S", "2"); // Spade 2
         Card card4 = new Card("C", "1"); // Clover 1
+        int gamerInitialScore = gamer.getScore();
+        int dealerInitialScore = dealer.getScore();
 
-        gamer.draw(card1);
-        dealer.draw(card2);
-        gamer.draw(card3);
-        dealer.draw(card4);
+        gamer.draw(deck, card1);
+        dealer.draw(deck, card2);
+        gamer.draw(deck, card3);
+        dealer.draw(deck, card4);
 
-        assertEquals(12, gamer.getScore());
-        assertEquals(11, dealer.getScore());
+        assertEquals(12, gamer.getScore() - gamerInitialScore);
+        assertEquals(11, dealer.getScore() - dealerInitialScore);
     }
 
     @Test
     public void winner() {
-        Card card1 = new Card("H", "10"); // Heart 1
-        Card card2 = new Card("D", "J"); // Diamond 1
-        Card card3 = new Card("S", "2"); // Heart 1
-        Card card4 = new Card("C", "1"); // Diamond 1
+        System.out.println(gamer.getScore()+" "+dealer.getScore());
+        if(gamer.getScore()>dealer.getScore())
+            System.out.println("게이머 승리");
+        else if(gamer.getScore()<dealer.getScore())
+            System.out.println("딜러 승리");
+        else
+            System.out.println("무승부");
 
-        gamer.draw(card1);
-        dealer.draw(card2);
-        gamer.draw(card3);
-        dealer.draw(card4);
-
-        assertEquals(12, gamer.getScore());
-        assertEquals(11, dealer.getScore());
-
-        game.calculate();
     }
 
     @Test
     public void chooseCardAndRemoveFromDeck() {
-        Card drawCard = game.draw(gamer, 0);// Diamond 1
-        assertEquals(1, gamer.getScore());
-        List<Card> deck = game.getDeck();
-        assertFalse(deck.contains(drawCard));
-        for (Card card : deck) {
-            System.out.println(card);
-        }
+
+        assertEquals(48, deck.getCards().size());
+        Card card = deck.scatter();
+        assertEquals(47, deck.getCards().size());
+        assertFalse(deck.getCards().contains(card));
     }
 
     @Test
-    public void playerActionTest() {
-        Card card1 = new Card("H", "10"); // Heart 1
-        Card card2 = new Card("D", "J"); // Diamond 1
-        Card card3 = new Card("S", "2"); // Heart 1
-        Card card4 = new Card("C", "1"); // Diamond 1
-        Card card5 = new Card("H", "5"); // Heart 5
-        Card card6 = new Card("D", "Q"); // Diamond Queen
+    public void dealerActionTest() {
 
-        gamer.draw(card1);
-        dealer.draw(card2);
-        gamer.draw(card3);
-        dealer.draw(card4);
+        int gamerScore = gamer.getScore();
+        int dealerScore = dealer.getScore();
 
-        assertEquals(12, gamer.getScore());
-        assertEquals(11, dealer.getScore());
+        Card card = dealer.action(deck);
 
-        positiveUserInput();
-        gamer.action_G(card5);
-        dealer.action_D(card6);
+        if(dealerScore <= 16) {
+            assertEquals(dealerScore + card.getScore(), dealer.getScore());
 
-        game.calculate();
-    }
-
-    private void positiveUserInput() {
-        String data = "1";
-        InputStream stdin = System.in;
-        try {
-            System.setIn(new ByteArrayInputStream(data.getBytes()));
-        } finally {
-            System.setIn(stdin);
+            if(dealerScore > 21) {
+                assertTrue(dealer.isEnd());
+            }
+        }
+        else {
+            assertEquals(dealerScore, dealer.getScore());
+            assertTrue(dealer.isEnd());
         }
     }
 
-    /*
-    TODO 계속 뽑을건지 사용자 input 받기
-         누가 이겼는지 판단하기
-         21을 초과한 경우 테스트 작성
-         README 작성
-     */
+
+    @Test
+    public void Deck() {
+        Deck deck = new Deck();
+    }
+
+    @Test
+    public void gameConstruct() {
+        assertEquals(2,gamer.getCardNum());
+        assertEquals(2,dealer.getCardNum());
+    } // 2장씩 뽑았는지 확인
+
+    @Test
+    public void dealer_drawCard()   {
+
+    }
+
 }

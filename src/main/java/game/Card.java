@@ -1,9 +1,11 @@
+package game;
+
 public class Card {
-    private String mark;
+    private Mark mark;
     private Integer num;
 
-    public Card(String M, String N)  {
-        this.mark=M;
+    public Card(Mark mark, String N)  {
+        this.mark = mark;
 
         if(N.equals("K") ||  N.equals("Q") || N.equals("J"))
             this.num = 10;
