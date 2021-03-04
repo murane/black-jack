@@ -9,17 +9,17 @@ public class Deck {
     public Deck() {
         cards = new LinkedList<>();
 
-        makeDeck("D");
-        makeDeck("S");
-        makeDeck("C");
-        makeDeck("H");
+        makeDeck(Mark.HEART);
+        makeDeck(Mark.DIAMOND);
+        makeDeck(Mark.SPADE);
+        makeDeck(Mark.CLOVER);
     }
 
     public List<Card> getCards() {
         return cards;
     }
 
-    private void makeDeck(String mark) {
+    private void makeDeck(Mark mark) {
         cards.add(new Card(mark, "1"));
         cards.add(new Card(mark,"2"));
         cards.add(new Card(mark,"3"));

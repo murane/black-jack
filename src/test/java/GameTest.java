@@ -1,6 +1,7 @@
 import game.Card;
 import game.Deck;
 import game.Game;
+import game.Mark;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import player.Dealer;
@@ -25,8 +26,8 @@ public class GameTest {
 
     @Test
     public void chooseCard() {
-        Card card1 = new Card("H", "1"); // Heart 1
-        Card card2 = new Card("D", "1"); // Diamond 1
+        Card card1 = new Card(Mark.HEART, "1"); // Heart 1
+        Card card2 = new Card(Mark.DIAMOND, "1"); // Diamond 1
 
         Dealer player = new Dealer();
         player.draw(deck,card1);
@@ -37,10 +38,10 @@ public class GameTest {
 
     @Test
     public void chooseCard_2() {
-        Card card1 = new Card("H", "10"); // Heart 10
-        Card card2 = new Card("D", "J"); // Diamond Jack
-        Card card3 = new Card("S", "2"); // Spade 2
-        Card card4 = new Card("C", "1"); // Clover 1
+        Card card1 = new Card(Mark.HEART, "10"); // Heart 10
+        Card card2 = new Card(Mark.DIAMOND, "J"); // Diamond Jack
+        Card card3 = new Card(Mark.SPADE, "2"); // Spade 2
+        Card card4 = new Card(Mark.CLOVER, "1"); // Clover 1
         int gamerInitialScore = gamer.getScore();
         int dealerInitialScore = dealer.getScore();
 
