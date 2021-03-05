@@ -17,3 +17,44 @@
 3) [ ] Dealer
 4) [ ] Gamer
 5) [ ] Game
+
+### 전체적인 게임의 흐름
+1. 딜러와 게이머와 각각 2장씩 카드를 뽑는다
+2. 딜러는 16점 이하라면 카드를 하나 더 뽑는다
+3. 게이머는 자신이 뽑고 싶은 만큼 카드를 더 뽑는다
+4. 승자를 출력하고 끝난다
+
+### 패키지 구성
+패키지는 도메인과 역할별로 구성을 하였다
+- `card` : Card 도메인과 관련된 클래스들이 모여있다
+- `policy` : 카드 뽑기나 승자를 판별하는 정책이 모여있다
+- `user` : User(Dealer, Gamer)와 UserFactory가 있다
+- `util` : 유틸관련한 클래스들이 모여있다
+- `root` : Game과 Main 클래스가 있다
+```
+root
+  | Main.java
+  | Game.java
+  |
+  |____card
+  |      | Card.java
+  |      | Deck.java
+  |
+  |____policy
+  |      | DrawPolicy<interface>.java
+  |      | DealerDrawPolicy.java
+  |      | GamerDrawPolicy.java
+  |      | WinnerPolicy<interface>.java
+  |      | WinnerPolicyImpl.java
+  | 
+  |____user
+  |      | User.java
+  |      | UserFactory.java
+  |       
+  |____util
+         |Caculator.java
+```
+
+### 클래스 사용관계 다이어그램  
+
+![black-jack](./img/black-jack.png)
