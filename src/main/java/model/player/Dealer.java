@@ -1,12 +1,11 @@
-package model;
+package model.player;
+
+import model.card.Card;
+import model.card.Cards;
+import model.card.Deck;
 
 public class Dealer implements Player{
     private Cards cards= new Cards();
-
-    public Dealer(Deck deck) {
-        draw(deck);
-        draw(deck);
-    }
 
     @Override
     public Cards getCards() {
@@ -14,7 +13,7 @@ public class Dealer implements Player{
     }
 
     @Override
-    public void draw(Deck deck) {
+    public void hit(Deck deck) {
         Card card = deck.pop();
         cards.add(card);
     }
@@ -24,5 +23,11 @@ public class Dealer implements Player{
         return cards.getStat();
     }
 
+    public boolean isStand(){
+        if(getStat()>=17){
+            return true;
+        }
+        return false;
+    }
 
 }

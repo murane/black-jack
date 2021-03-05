@@ -1,12 +1,11 @@
-package model;
+package model.player;
+
+import model.card.Card;
+import model.card.Cards;
+import model.card.Deck;
 
 public class Gamer implements Player {
     private Cards cards= new Cards();
-
-    public Gamer(Deck deck) {
-        draw(deck);
-        draw(deck);
-    }
 
     @Override
     public Cards getCards() {
@@ -14,7 +13,7 @@ public class Gamer implements Player {
     }
 
     @Override
-    public void draw(Deck deck) {
+    public void hit(Deck deck) {
         Card card = deck.pop();
         cards.add(card);
     }
@@ -23,6 +22,7 @@ public class Gamer implements Player {
     public int getStat() {
         return cards.getStat();
     }
+
 
 
 }
