@@ -37,13 +37,12 @@ public class Game {
 
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        sc.close();
 
         return input.equals("Y");
     }
 
-    public User getWinner() {
-        return winnerPolicy.determine(dealer, gamer);
+    public void getWinner() {
+        System.out.println("Winner : "+winnerPolicy.determine(dealer, gamer).toString());
     }
 }
 
