@@ -1,6 +1,7 @@
 package user;
 
 import card.Card;
+import policy.DealerDrawPolicy;
 import policy.DrawPolicy;
 
 import java.util.*;
@@ -25,5 +26,13 @@ public class User {
 
     public List<Card> getCards() {
         return cards;
+    }
+
+    @Override
+    public String toString() {
+        if(drawPolicy.getClass() == DealerDrawPolicy.class) {
+            return "dealer";
+        }
+        return "gamer";
     }
 }
