@@ -32,7 +32,7 @@ public class Game {
         }
     }
 
-    public boolean askGamerToDrawMore() {
+    private boolean askGamerToDrawMore() {
         System.out.println("Would you draw more card? [Y/N]");
 
         Scanner sc = new Scanner(System.in);
