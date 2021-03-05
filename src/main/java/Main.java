@@ -12,5 +12,7 @@ public class Main {
                 UserFactory.getGamer()
         );
         game.run();
+        game.askGamerToDrawMore();
+        game.getWinner();
     }
 }
