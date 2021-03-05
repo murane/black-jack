@@ -38,6 +38,7 @@ root
   |
   |____card
   |      | Card.java
+  |      | DeckFactory.java
   |      | Deck.java
   |
   |____policy
