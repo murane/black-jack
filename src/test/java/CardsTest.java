@@ -1,5 +1,7 @@
-import model.Card;
-import model.Cards;
+import model.card.Card;
+import model.card.Cards;
+import model.card.Number;
+import model.card.Suit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,15 +19,15 @@ class CardsTest {
     //4. 카드 꺼내기 pop()
     @Test
     void 카드추가(){
-        Card card=new Card("Heart","A");
+        Card card=new Card(Suit.HEART, Number.ACE);
         cards.add(card);
         assertThat(cards.peek()).isEqualTo(card);
     }
     @Test
     void 카드점수반환(){
-        Card card1=new Card("Heart","A");
-        Card card2=new Card("Heart","5");
-        Card card3=new Card("Heart","K");
+        Card card1=new Card(Suit.HEART,Number.ACE);
+        Card card2=new Card(Suit.HEART,Number.FIVE);
+        Card card3=new Card(Suit.HEART,Number.KING);
         cards.add(card1);
         cards.add(card2);
         cards.add(card3);
@@ -34,8 +36,8 @@ class CardsTest {
 
     @Test
     void 카드꺼내오기(){
-        Card card1=new Card("Heart","A");
-        Card card2=new Card("Heart","5");
+        Card card1=new Card(Suit.HEART,Number.ACE);
+        Card card2=new Card(Suit.HEART,Number.FIVE);
         cards.add(card1);
         cards.add(card2);
         assertThat(cards.pop()).isEqualTo(card1);

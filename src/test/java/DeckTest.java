@@ -1,4 +1,4 @@
-import model.Deck;
+import model.card.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ class DeckTest {
     void 덱생성(){
         deck = new Deck();
 
-//      assertThat(deck.getCards().getSize()).isEqualTo(52);
+      assertThat(deck.getCards().getSize()).isEqualTo(52);
     }
 
     // pop 카드 한장 꺼내가기

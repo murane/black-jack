@@ -1,6 +1,6 @@
-import model.Cards;
-import model.Deck;
-import model.Gamer;
+import model.card.Cards;
+import model.card.Deck;
+import model.player.Gamer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +16,12 @@ class GamerTest {
     @BeforeEach
     void 게이머생성(){
         deck = new Deck();
-        gamer = new Gamer(deck);
+        gamer = new Gamer();
     }
 
     @Test
-    void draw테스트(){
-        gamer.draw(deck);
+    void hit테스트(){
+        gamer.hit(deck);
         Cards cards = gamer.getCards();
         assertThat(cards.getSize()).isEqualTo(3);
     }

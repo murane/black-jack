@@ -1,4 +1,6 @@
-import model.Card;
+import model.card.Card;
+import model.card.Number;
+import model.card.Suit;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,9 +13,9 @@ class CardTest {
     @Test
     public void 카드생성(){
         assertThat(5).isEqualTo(5);
-        Card card = new Card("heart","10");
+        Card card = new Card(Suit.HEART, Number.TEN);
         assertThat(card.getNumber()).isEqualTo(10);
-        assertThat(card.getSuit()).isEqualTo("heart");
+        assertThat(card.getSuit()).isEqualTo("♥");
     }
 
 

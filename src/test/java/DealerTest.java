@@ -1,13 +1,13 @@
-import model.Cards;
-import model.Dealer;
-import model.Deck;
+import model.card.Cards;
+import model.card.Deck;
+import model.player.Gamer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DealerTest {
-    Dealer dealer;
+    Gamer gamer;
     Deck deck;
 
     //1. 생성자에게 Deck을 알려준다
@@ -16,13 +16,13 @@ class DealerTest {
     @BeforeEach
     void 딜러생성(){
         deck = new Deck();
-        dealer = new Dealer(deck);
+        gamer = new Gamer();
     }
 
     @Test
-    void draw테스트_16점(){
-        dealer.draw(deck);
-        Cards cards = dealer.getCards();
+    void hit테스트_16점(){
+        gamer.hit(deck);
+        Cards cards = gamer.getCards();
         assertThat(cards.getSize()).isEqualTo(3);
     }
 }
