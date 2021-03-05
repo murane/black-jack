@@ -1,3 +1,5 @@
+package model;
+
 public class Deck {
     private Cards cards = new Cards();
 

@@ -1,3 +1,6 @@
+import model.Cards;
+import model.Dealer;
+import model.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +21,7 @@ class DealerTest {
 
     @Test
     void draw테스트_16점(){
-        dealer.draw(1);
+        dealer.draw(deck);
         Cards cards = dealer.getCards();
         assertThat(cards.getSize()).isEqualTo(3);
     }

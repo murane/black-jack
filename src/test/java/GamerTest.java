@@ -1,3 +1,6 @@
+import model.Cards;
+import model.Deck;
+import model.Gamer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +21,7 @@ class GamerTest {
 
     @Test
     void draw테스트(){
-        gamer.draw(1);
+        gamer.draw(deck);
         Cards cards = gamer.getCards();
         assertThat(cards.getSize()).isEqualTo(3);
     }

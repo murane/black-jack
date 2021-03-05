@@ -12,8 +12,4 @@
 
 
 ### 기능 구현
-1) [ ] Card
-2) [ ] Deck
-3) [ ] Dealer
-4) [ ] Gamer
-5) [ ] Game
+

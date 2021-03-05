@@ -1,7 +1,10 @@
+package model;
+
 public class Card {
     private final String suit;
     private final String number;
 
+    //TODO::suit, number 포장
     public Card(String suit, String number) {
         this.suit = suit;
         this.number = number;

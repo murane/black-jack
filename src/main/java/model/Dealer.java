@@ -1,10 +1,11 @@
+package model;
+
 public class Dealer implements Player{
-    private Cards cards = new Cards();
-    private Deck deck;
+    private Cards cards= new Cards();
 
     public Dealer(Deck deck) {
-        this.deck = deck;
-        draw(2);
+        draw(deck);
+        draw(deck);
     }
 
     @Override
@@ -13,11 +14,9 @@ public class Dealer implements Player{
     }
 
     @Override
-    public void draw(int times) {
-        for(int i=0;i<times;i++){
-            Card card = deck.pop();
-            cards.add(card);
-        }
+    public void draw(Deck deck) {
+        Card card = deck.pop();
+        cards.add(card);
     }
 
     @Override
