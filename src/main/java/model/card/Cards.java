@@ -1,7 +1,8 @@
-package model;
+package model.card;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.stream.Stream;
 
 public class Cards {
     private LinkedList<Card> cards=new LinkedList<Card>();
@@ -16,6 +17,10 @@ public class Cards {
 
     public int getStat() {
         return cards.stream().mapToInt(Card::getNumber).sum();
+    }
+
+    public Stream<?> getStream(){
+        return cards.stream();
     }
 
     public Card pop() {
